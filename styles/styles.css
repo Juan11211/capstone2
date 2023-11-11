@@ -1,0 +1,38 @@
+.bannerImg {
+    height: 75vh;
+    width: 100%;
+    
+}
+
+.aboutImg {
+    height: 50vh;
+}
+
+.card-hover-effect {
+    transition: transform 0.3s;
+    overflow: hidden;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-hover-effect .image-overlay {
+    transform: scale(1.05); /* Adjust the scale to your preference */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the alpha channel (last value) to change the darkness */
+  }
+  
+  .card-hover-effect:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+  }
+
+  .card {
+    border-radius: 25px;
+  }
+
+  footer {
+    height: 100px;
+  }
