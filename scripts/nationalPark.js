@@ -64,7 +64,7 @@ function locationDropDownValue() {
 
 
 function parkTypeDropDownValue(){
-
+    
 }
 
 function displayLocation(){
