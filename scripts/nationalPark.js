@@ -6,26 +6,17 @@ window.onload = function () {
     let locationDropDown = document.getElementById("locationDropDown");
     let parkTypeDropDown = document.getElementById("parkTypeDropDown");
 
+
     searchByLocation.onchange = searchByLocationHandler;
     searchByParkType.onchange = searchByParkTypeHandler;
 
+    parkTypeDropDown.style.display = 'none';
+    locationDropDown.style.display = "none"
+
+    locationDropDown.onchange = locationDropDownValue;
+    parkTypeDropDown.onchange = parkTypeDropDownValue;
+
 };
-
-function populateLocationDropDown() {
-    locationDropDown.innerHTML = ""; // Clear existing options
-    for (let location of locationsArray) {
-        let option = new Option(location);
-        locationDropDown.appendChild(option);
-    }
-}
-
-function populateParkTypeDropDown() {
-    parkTypeDropDown.innerHTML = ""; // Clear existing options
-    for (let parkType of parkTypesArray) {
-        let option = new Option(parkType);
-        parkTypeDropDown.appendChild(option);
-    }
-}
 
 function searchByLocationHandler() {
     if (searchByLocation.checked) {
@@ -43,3 +34,43 @@ function searchByParkTypeHandler() {
     }
 }
 
+function populateLocationDropDown() {
+    let defaultLocationOption = new Option("Select One", "");
+    locationDropDown.appendChild(defaultLocationOption);
+    for (let location of locationsArray) {
+        let option = new Option(location);
+        locationDropDown.appendChild(option);
+    }
+}
+
+
+function populateParkTypeDropDown() {
+    let defaultParkOption = new Option("Select One", "");
+    parkTypeDropDown.appendChild(defaultParkOption)
+    for (let parkType of parkTypesArray) {
+        let option = new Option(parkType);
+        parkTypeDropDown.appendChild(option);
+    }
+}
+
+function locationDropDownValue() {
+    let selectedValue = locationDropDown.value;
+
+    if (selectedValue === "") {
+        let selectedParks = nationalParksArray.filter(park => park.State === selectedValue);
+        console.log(selectedParks);
+    } 
+}
+
+
+function parkTypeDropDownValue(){
+
+}
+
+function displayLocation(){
+
+}
+
+function displayParkByType(){
+
+}
