@@ -127,7 +127,6 @@ function displayLocation(selectedParks) {
             parkCard.classList.add('card');
 
             parkCard.innerHTML = `
-                <img src="" class="card-img-top" alt="Park Image">
                 <div class="card-body">
                     <h5 class="card-title">${park.LocationName}</h5>
                     <p class="card-text">Location: ${park.City}, ${park.State}</p>
