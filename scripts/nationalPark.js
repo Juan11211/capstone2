@@ -15,6 +15,8 @@ window.onload = function () {
     locationDropDown.onchange = locationDropDownValue;
     parkTypeDropDown.onchange = parkTypeDropDownValue;
 
+    displayAllParks();
+
 };
 
 function searchByLocationHandler() {
@@ -79,7 +81,10 @@ function parkTypeDropDownValue() {
     displayLocation(selectedParks);
 }
 
-
+function displayAllParks() {
+    // Display all parks without filtering
+    displayLocation(nationalParksArray);
+}
 
 function displayLocation(selectedParks) {
     let displayParkLocation = document.getElementById("displayParkLocation");
