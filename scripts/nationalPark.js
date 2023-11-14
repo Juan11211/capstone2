@@ -57,9 +57,13 @@ function locationDropDownValue() {
     let selectedValue = locationDropDown.value;
 
     if (selectedValue === "") {
-        let selectedParks = nationalParksArray.filter(park => park.State === selectedValue);
+        selectedParks = nationalParksArray.filter(park => park.State === selectedValue);
         console.log(selectedParks);
     } 
+
+    if(selectedParks.length > 0){
+        displayLocation()
+    }
 }
 
 
@@ -67,7 +71,10 @@ function parkTypeDropDownValue(){
     
 }
 
-function displayLocation(){
+function displayLocation(selectedValue){
+    let displayParkLocation = document.getElementById("displayParkLocation");
+
+   
 
 }
 
