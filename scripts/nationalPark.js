@@ -115,30 +115,59 @@ function parkTypeDropDownValue(){
 //         displayParkLocation.appendChild(parkLocationCard); // Append the card to the container
 //     });
 // }
+// function displayLocation(selectedParks) {
+//     let displayParkLocation = document.getElementById("displayParkLocation");
+
+//     // Clear the existing content before populating with new park cards
+//     displayParkLocation.innerHTML = "";
+
+//     if (selectedParks.length > 0) {
+//         displayParkLocation.style.display = "block"; // Show the card section
+
+//         selectedParks.forEach(park => {
+//             const parkCard = document.createElement('div');
+//             parkCard.classList.add('card');
+
+//             parkCard.innerHTML = `
+//                 <div class="card-body">
+//                     <h5 class="card-title">${park.LocationName}</h5>
+//                     <p class="card-text">Location: ${park.City}, ${park.State}</p>
+//                 </div>
+//             `;
+
+//             displayParkLocation.appendChild(parkCard);
+//         });
+//     } else {
+//         displayParkLocation.style.display = "none"; // Hide the card section if no parks are found
+//     }
+// }
+
 function displayLocation(selectedParks) {
     let displayParkLocation = document.getElementById("displayParkLocation");
-    displayParkLocation.innerHTML = ""; // Clear the content before populating with new park cards
+
+    // Assuming the existing card structure has specific classes for title and text
+    const cardTitles = displayParkLocation.querySelectorAll('.card-title');
+    const cardTexts = displayParkLocation.querySelectorAll('.card-text');
+
+    // Clear the existing content before populating with new park data
+    cardTitles.forEach(title => title.innerHTML = "");
+    cardTexts.forEach(text => text.innerHTML = "");
 
     if (selectedParks.length > 0) {
         displayParkLocation.style.display = "block"; // Show the card section
 
-        selectedParks.forEach(park => {
-            const parkCard = document.createElement('div');
-            parkCard.classList.add('card');
-
-            parkCard.innerHTML = `
-                <div class="card-body">
-                    <h5 class="card-title">${park.LocationName}</h5>
-                    <p class="card-text">Location: ${park.City}, ${park.State}</p>
-                </div>
-            `;
-
-            displayParkLocation.appendChild(parkCard);
+        selectedParks.forEach((park, index) => {
+            // Update the content of the existing cards
+            cardTitles[index].innerHTML = park.LocationName;
+            cardTexts[index].innerHTML = `Location: ${park.City}, ${park.State}`;
         });
     } else {
         displayParkLocation.style.display = "none"; // Hide the card section if no parks are found
     }
 }
+
+
+
 
 
 
