@@ -43,78 +43,52 @@ function populateLocationDropDown() {
 }
 
 
-function populateParkTypeDropDown() {
-    let defaultParkOption = new Option("Select One", "");
-    parkTypeDropDown.appendChild(defaultParkOption)
-    for (let parkType of parkTypesArray) {
-        let option = new Option(parkType);
-        parkTypeDropDown.appendChild(option);
-    }
-}
+// function populateParkTypeDropDown() {
+//     let defaultParkOption = new Option("Select One", "");
+//     parkTypeDropDown.appendChild(defaultParkOption)
+//     for (let parkType of parkTypesArray) {
+//         let option = new Option(parkType);
+//         parkTypeDropDown.appendChild(option);
+//     }
+// }
+
+// // function locationDropDownValue() {
+// //     let selectedValue = locationDropDown.value;
+
+// //     let selectedParks = selectedValue
+// //         ? nationalParksArray.filter(park => park.State === selectedValue)
+// //         : nationalParksArray;
+
+// //     displayLocation(selectedParks);
+// // }
 
 // function locationDropDownValue() {
 //     let selectedValue = locationDropDown.value;
-//     let selectedParks = []
 
-//     if (selectedValue === "") {
-//         selectedParks = nationalParksArray.filter(park => park.State === selectedValue);
-//         console.log(selectedParks);
+//     let selectedParks;
 
-     
+//     if (selectedValue !== "") {
+//         selectedParks = nationalParksArray.filter(park => {
+//             return park.State === selectedValue;
+//         });
 //     } 
 
-//     if(selectedParks.length > 0){
-//         displayLocation(selectedParks)
+//     displayLocation(selectedParks);
+// }
+
+
+// function parkTypeDropDownValue() {
+//     let selectedParkType = parkTypeDropDown.value;
+
+//     let selectedParks;
+
+//     if (selectedParkType !== "") {
+//         selectedParks = nationalParksArray.filter(park => park.ParkType === selectedParkType);
 //     }
-// }
-function locationDropDownValue() {
-    let selectedValue = locationDropDown.value;
-    let selectedParks = [];
 
-    if (selectedValue === "") {
-        displayAllParks(); // Display all parks when no specific state is selected
-    } else {
-        selectedParks = nationalParksArray.filter(park => park.State === selectedValue);
-        displayLocation(selectedParks); // Display parks for the selected state
-    }
-}
-
-
-function parkTypeDropDownValue(){
-    
-}
-
-// function displayAllParks() {
-//     displayLocation(nationalParksArray); // Display all parks
+//     displayLocation(selectedParks);
 // }
 
-// function displayLocation(selectedParks) {
-//     let displayParkLocation = document.getElementById("displayParkLocation");
-    
-//     displayParkLocation.innerHTML = ""; // Clear the content before populating with new park cards
-
-//     selectedParks.forEach(park => {
-//         const parkLocationCard = document.createElement("div");
-//         parkLocationCard.classList.add("card");
-//         parkLocationCard.style.width = "18rem";
-
-//         const cardBody = document.createElement("div");
-//         cardBody.classList.add("card-body");
-//         const cardTitle = document.createElement("h5");
-//         cardTitle.classList.add("card-title");
-//         cardTitle.innerText = park.LocationName; // Set the park name as card title
-
-//         const cardText = document.createElement("p");
-//         cardText.classList.add("card-text");
-//         cardText.innerText = `Location: ${park.City}, ${park.State}`; // Display city and state
-
-//         cardBody.appendChild(cardTitle);
-//         cardBody.appendChild(cardText);
-//         parkLocationCard.appendChild(cardBody);
-
-//         displayParkLocation.appendChild(parkLocationCard); // Append the card to the container
-//     });
-// }
 // function displayLocation(selectedParks) {
 //     let displayParkLocation = document.getElementById("displayParkLocation");
 
@@ -122,7 +96,7 @@ function parkTypeDropDownValue(){
 //     displayParkLocation.innerHTML = "";
 
 //     if (selectedParks.length > 0) {
-//         displayParkLocation.style.display = "block"; // Show the card section
+//         displayParkLocation.style.display = "block"; 
 
 //         selectedParks.forEach(park => {
 //             const parkCard = document.createElement('div');
@@ -137,41 +111,98 @@ function parkTypeDropDownValue(){
 
 //             displayParkLocation.appendChild(parkCard);
 //         });
-//     } else {
-//         displayParkLocation.style.display = "none"; // Hide the card section if no parks are found
-//     }
+//     } 
 // }
 
-function displayLocation(selectedParks) {
-    let displayParkLocation = document.getElementById("displayParkLocation");
+// function displayParkByType(){
 
-    // Assuming the existing card structure has specific classes for title and text
-    const cardTitles = displayParkLocation.querySelectorAll('.card-title');
-    const cardTexts = displayParkLocation.querySelectorAll('.card-text');
-
-    // Clear the existing content before populating with new park data
-    cardTitles.forEach(title => title.innerHTML = "");
-    cardTexts.forEach(text => text.innerHTML = "");
-
-    if (selectedParks.length > 0) {
-        displayParkLocation.style.display = "block"; // Show the card section
-
-        selectedParks.forEach((park, index) => {
-            // Update the content of the existing cards
-            cardTitles[index].innerHTML = park.LocationName;
-            cardTexts[index].innerHTML = `Location: ${park.City}, ${park.State}`;
-        });
-    } else {
-        displayParkLocation.style.display = "none"; // Hide the card section if no parks are found
+// }
+function populateParkTypeDropDown() {
+    let defaultParkOption = new Option("Select One", "");
+    parkTypeDropDown.appendChild(defaultParkOption);
+    for (let parkType of parkTypesArray) {
+        let option = new Option(parkType);
+        parkTypeDropDown.appendChild(option);
     }
+}
+
+function locationDropDownValue() {
+    let selectedValue = locationDropDown.value;
+
+    let selectedParks = []
+
+    if (selectedValue !== "") {
+        selectedParks = nationalParksArray.filter(park => park.State === selectedValue);
+    }
+
+    displayLocation(selectedParks);
+}
+
+function parkTypeDropDownValue() {
+    let selectedParkType = parkTypeDropDown.value;
+
+    let selectedParks = []
+ 
+    if (selectedParkType !== "") {
+        selectedParks = nationalParksArray.filter(park => park.LocationName.includes(selectedParkType));
+            console.log(selectedParks)
+    }
+
+    displayLocation(selectedParks);
 }
 
 
 
+function displayLocation(selectedParks) {
+    let displayParkLocation = document.getElementById("displayParkLocation");
 
+    // Clear the existing content before populating with new park cards
+    displayParkLocation.innerHTML = "";
 
+    if (selectedParks.length > 0) {
+        displayParkLocation.style.display = "block";
 
+        // selectedParks.forEach(park => {
+        //     const parkCard = document.createElement('div');
+        //     parkCard.classList.add('card');
+            
 
-function displayParkByType(){
+        //     parkCard.innerHTML = `
+        //         <div class="card-body">
+        //             <h5 class="card-title">${park.LocationName}</h5>
+        //             <p class="card-text">Location: ${park.City}, ${park.State}</p>
+        //         </div>
+        //     `;
 
+        //     displayParkLocation.appendChild(parkCard);
+        // });
+
+        selectedParks.forEach(park => {
+            const parkCard = document.createElement('div');
+            parkCard.classList.add('card');
+        
+            const cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+        
+            const cardTitle = document.createElement('h5');
+            cardTitle.classList.add('card-title');
+            cardTitle.textContent = park.LocationName;
+        
+            const cardText = document.createElement('p');
+            cardText.classList.add('card-text');
+            cardText.textContent = `Location: ${park.City}, ${park.State}`;
+        
+            cardBody.appendChild(cardTitle);
+            cardBody.appendChild(cardText);
+        
+            parkCard.appendChild(cardBody);
+        
+            displayParkLocation.appendChild(parkCard);
+        });
+        
+    }
+}
+
+function displayParkByType() {
+    // Implement this function as needed
 }

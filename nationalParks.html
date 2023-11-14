@@ -57,55 +57,46 @@
             </div>
         </div>
 
-        <div class="row container">
-            <div class="col-md-6 text-center text-uppercase mb-3">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" id="searchByLocation" name="searchBy" value="searchByLocation">
-                    <label class="form-check-label" for="searchByLocation">Select By Location</label>
-                </div>
-            </div>
-        
-            <div class="col-md-6 text-center text-uppercase mb-3">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" id="searchByParkType" name="searchBy" value="searchByParkType">
-                    <label class="form-check-label" for="searchByParkType">Select By Park Type</label>
-                </div>
-            </div>
-        </div>
-        
-        <div class="container">
-            <form class="form">
-                <select id="locationDropDown"></select>
-            </form>
-        </div>
-
-        <div class="container">
-            <form>
-               <select id="parkTypeDropDown"></select> 
-            </form>
-        </div>
-
-        <div class="container">
-          <div id="displayParkLocation" class="card-group">
-            <!-- Bootstrap Card Template -->
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Park Title</h5>
-                <p class="card-text">Location: City, State</p>
-              </div>
-            </div>
+        <div class="row container d-flex">
+          <div class="col-md-6">
+              <form id="locationForm">
+                  <div class="text-uppercase mb-3">
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" id="searchByLocation" name="searchBy" value="searchByLocation">
+                          <label class="form-check-label" for="searchByLocation">Select By Location</label>
+                      </div>
+                  </div>
+                  
+                  <div class="container">
+                      <div class="form-group">
+                          <select id="locationDropDown"></select>
+                      </div>
+                  </div>
+              </form>
           </div>
-          
+      
+          <div class="col-md-6">
+              <form id="parkTypeForm">
+                  <div class="text-uppercase mb-3">
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" id="searchByParkType" name="searchBy" value="searchByParkType">
+                          <label class="form-check-label" for="searchByParkType">Select By Park Type</label>
+                      </div>
+                  </div>
+        
+                  <div class="container">
+                      <div class="form-group">
+                          <select id="parkTypeDropDown"></select>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+      
 
-            <div id="displayParkByType">
-              <div class="card" >
-                <img src="" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text"></p>
-                </div>
-              </div>
-            </div>
-        </div>
+        <div class="container">
+          <div id="displayParkLocation"></div>
+          <div id="displayParkByType"></div>
     </main>
 
 
