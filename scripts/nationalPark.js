@@ -109,15 +109,15 @@ function displayLocation(selectedParks) {
             parkCard.classList.add('card', 'mb-3');  // Adding Bootstrap card class and margin-bottom
         
             const cardBody = document.createElement('div');
-            cardBody.classList.add('card-body', 'd-flex', 'justify-content-between'); // Added flex utility classes
+            cardBody.classList.add('card-body', 'd-flex', 'flex-column', 'justify-content-between'); // Added flex utility classes
 
             const cardTitle = document.createElement('h5');
-            cardTitle.classList.add('card-title', 'text-dark');  // Adding Bootstrap text color class
+            cardTitle.classList.add('card-title', 'text-dark', 'mb-0');  // Adding Bootstrap text color class and margin-bottom
             const titleText = document.createTextNode(park.LocationName);
             cardTitle.appendChild(titleText);
         
             const cardText = document.createElement('p');
-            cardText.classList.add('card-text');
+            cardText.classList.add('card-text', 'mb-2', 'ml-auto'); // Adding margin-bottom and ml-auto to move it to the right
             const locationText = document.createTextNode(`Location: ${park.City}, ${park.State}`);
             cardText.appendChild(locationText);
 
@@ -126,7 +126,7 @@ function displayLocation(selectedParks) {
                 const parkLink = document.createElement('a');
                 parkLink.setAttribute('href', park.Visit);
                 parkLink.setAttribute('target', '_blank');
-                parkLink.classList.add('btn', 'btn-dark', 'btn-sm', 'text-center'); 
+                parkLink.classList.add('btn', 'btn-dark', 'btn-sm', 'text-center', 'flex-shrink-0'); // Added flex-shrink-0 to prevent button from shrinking
                 parkLink.innerHTML = 'Visit Property';
                 cardBody.appendChild(parkLink);
             }
@@ -139,6 +139,7 @@ function displayLocation(selectedParks) {
         });
     }
 }
+
 
 // function displayLocation(selectedParks) {
 //     let displayParkLocation = document.getElementById("displayParkLocation");
