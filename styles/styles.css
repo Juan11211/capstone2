@@ -31,6 +31,7 @@
 
   .card {
     border-radius: 25px;
+    max-height: 200px;
   }
 
   footer {
@@ -44,3 +45,5 @@
   #displayParkByType{
     display: none;
   }
+
+
