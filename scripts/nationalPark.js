@@ -32,7 +32,7 @@ function searchByLocationHandler() {
         parkTypeDropDown.style.display = "none";
         locationDropDown.style.display = "block";
         populateLocationDropDown();
-        clearDisplayedParks(); // Clear displayed parks when changing the selection
+        clearDisplayedParks(); 
     }
 }
 
@@ -42,7 +42,7 @@ function searchByParkTypeHandler() {
         locationDropDown.style.display = "none";
         parkTypeDropDown.style.display = "block";
         populateParkTypeDropDown();
-        clearDisplayedParks(); // Clear displayed parks when changing the selection
+        clearDisplayedParks();
     }
 }
 
@@ -166,14 +166,13 @@ function displayLocation(selectedParks) {
                         </div>
                     </div>
             </div>
-        </div>
-        
-            `;
-
+        </div>`;
             displayParkLocation.innerHTML += parkCard;
         });
     }
 }
+
+
 
 
 

@@ -1,7 +1,7 @@
-.bannerImg {
-    height: 75vh;
-    width: 100%;
-    
+.carousel-item img {
+  width: 100%;
+  overflow: hidden;
+  height: 75vh;
 }
 
 .aboutImg {
@@ -32,6 +32,10 @@
   .card {
     border-radius: 25px;
     max-height: 200px;
+  }
+
+  .card-image { 
+    object-fit: fill;
   }
 
   footer {
