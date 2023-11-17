@@ -94,51 +94,6 @@ function displayAllParks() {
     displayLocation(nationalParksArray);
 }
 
-// function displayLocation(selectedParks) {
-//     let displayParkLocation = document.getElementById("displayParkLocation");
-
-//     displayParkLocation.innerHTML = "";
-
-//     if (selectedParks.length > 0) {
-//         displayParkLocation.style.display = "block";
-
-//         selectedParks.forEach(park => {
-//             const parkCard = document.createElement('div');
-//             parkCard.classList.add('card', 'mb-3');  // Adding Bootstrap card class and margin-bottom
-        
-//             const cardBody = document.createElement('div');
-//             cardBody.classList.add('card-body', 'd-flex', 'flex-column', 'align-items-start'); // Added flex utility classes
-
-//             const cardTitle = document.createElement('h5');
-//             cardTitle.classList.add('card-title', 'text-dark', 'mb-2', 'mt-2');  // Adding Bootstrap text color class and margin-bottom
-//             const titleText = document.createTextNode(park.LocationName);
-//             cardTitle.appendChild(titleText);
-        
-//             const cardText = document.createElement('p');
-//             cardText.classList.add('card-text', 'mb-5'); // Adding margin-bottom
-//             const locationText = document.createTextNode(`Location: ${park.City}, ${park.State}`);
-//             cardText.appendChild(locationText);
-
-//             // Check if the park has a Visit link
-//             if (park.Visit) {
-//                 const parkLink = document.createElement('a');
-//                 parkLink.setAttribute('href', park.Visit);
-//                 parkLink.setAttribute('target', '_blank');
-//                 parkLink.classList.add('btn', 'btn-dark', 'btn-sm', 'align-self-end', 'mt-5'); // Added mt-3 to add margin-top
-//                 parkLink.innerHTML = 'Visit Property';
-//                 cardBody.appendChild(parkLink);
-//             }
-        
-//             cardBody.appendChild(cardTitle);
-//             cardBody.appendChild(cardText);
-//             parkCard.appendChild(cardBody);
-        
-//             displayParkLocation.appendChild(parkCard);
-//         });
-//     }
-// }
-
-
 
 function displayLocation(selectedParks) {
     let displayParkLocation = document.getElementById("displayParkLocation");
@@ -149,28 +104,79 @@ function displayLocation(selectedParks) {
         displayParkLocation.style.display = "block";
 
         selectedParks.forEach(park => {
-            let visitLink = '';
+            const parkCard = document.createElement('div');
+            parkCard.classList.add('card', 'mb-3');
 
+            const cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+
+            const cardTitle = document.createElement('h5');
+            cardTitle.classList.add('card-title', 'text-dark', 'mb-2', 'mt-2');
+            cardTitle.textContent = park.LocationName;
+
+            const cardText = document.createElement('p');
+            cardText.classList.add('card-text', 'mb-2');
+            cardText.textContent = `Location: ${park.City}, ${park.State}`;
+
+            // Check if the park has a Visit link
             if (park.Visit) {
-                visitLink = `<button href="${park.Visit}" target="_blank" class="btn btn-dark">Visit Park</button>`;
+                const parkLink = document.createElement('a');
+                parkLink.setAttribute('href', park.Visit);
+                parkLink.setAttribute('target', '_blank');
+                parkLink.classList.add('btn', 'btn-dark', 'btn-sm', 'align-self-end', 'mt-3');
+                parkLink.textContent = 'Visit Property';
+                cardBody.appendChild(parkLink);
             }
-    
-    const parkCard = 
-        `<div class="container">
-            <div class="row">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title text-dark">${park.LocationName}</h5>
-                            <p class="card-text">Location: ${park.City}, ${park.State}</p>
-                            ${visitLink}
-                        </div>
-                    </div>
-            </div>
-        </div>`;
-            displayParkLocation.innerHTML += parkCard;
+
+            // Add a tag underneath the location name and location
+            const parkTag = document.createElement('span');
+            parkTag.classList.add('badge', 'bg-primary', 'me-2');
+            parkTag.textContent = park.Tag; // Replace 'Tag' with the actual property name
+
+            cardBody.appendChild(cardTitle);
+            cardBody.appendChild(cardText);
+            cardBody.appendChild(parkTag);
+            parkCard.appendChild(cardBody);
+
+            displayParkLocation.appendChild(parkCard);
         });
     }
 }
+
+
+
+
+// function displayLocation(selectedParks) {
+//     let displayParkLocation = document.getElementById("displayParkLocation");
+
+//     displayParkLocation.innerHTML = "";
+
+//     if (selectedParks.length > 0) {
+//         displayParkLocation.style.display = "block";
+
+//         selectedParks.forEach(park => {
+//             let visitLink = '';
+
+//             if (park.Visit) {
+//                 visitLink = `<button href="${park.Visit}" target="_blank" class="btn btn-dark">Visit Park</button>`;
+//             }
+    
+//     const parkCard = 
+//         `<div class="container">
+//             <div class="row">
+//                     <div class="card mb-3">
+//                         <div class="card-body">
+//                             <h5 class="card-title text-dark">${park.LocationName}</h5>
+//                             <p class="card-text">Location: ${park.City}, ${park.State}</p>
+//                             ${visitLink}
+//                         </div>
+//                     </div>
+//             </div>
+//         </div>`;
+//             displayParkLocation.innerHTML += parkCard;
+//         });
+//     }
+// }
 
 
 
