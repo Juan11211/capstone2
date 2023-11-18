@@ -123,27 +123,22 @@ function displayLocation(selectedParks) {
                 const parkLink = document.createElement('a');
                 parkLink.setAttribute('href', park.Visit);
                 parkLink.setAttribute('target', '_blank');
-                parkLink.classList.add('btn', 'btn-dark', 'btn-sm', 'align-self-end', 'mt-3');
+                parkLink.classList.add('btn', 'btn-dark', 'btn-sm', 'mt-3');
                 parkLink.textContent = 'Visit Property';
                 cardBody.appendChild(parkLink);
             }
-
-            // Add a tag underneath the location name and location
-            const parkTag = document.createElement('span');
-            parkTag.classList.add('badge', 'bg-primary', 'me-2');
-            parkTag.textContent = park.Tag; // Replace 'Tag' with the actual property name
-
+            
             cardBody.appendChild(cardTitle);
             cardBody.appendChild(cardText);
-            cardBody.appendChild(parkTag);
+
+            // Append cardBody to parkCard
             parkCard.appendChild(cardBody);
 
+            // Append parkCard to displayParkLocation
             displayParkLocation.appendChild(parkCard);
         });
     }
 }
-
-
 
 
 // function displayLocation(selectedParks) {

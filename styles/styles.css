@@ -6,6 +6,8 @@
 
 .aboutImg {
     height: 50vh;
+    width: 100%;
+    border-radius: 20px;
 }
 
 .card-hover-effect {
@@ -28,10 +30,8 @@
   transform: scale(1.05); /* Apply the same scale on hover */
 }
 
-
   .card {
     border-radius: 25px;
-    max-height: 200px;
   }
 
   .card-image { 
@@ -42,12 +42,15 @@
     height: 100px;
   }
 
-  #displayParkLocation {
-    display: none; 
-  }
+  .navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 
-  #displayParkByType{
-    display: none;
-  }
+}
 
+.btn:hover {
+  background-color: olive;
+}
 
+li:hover{
+  color: olive;
+}
