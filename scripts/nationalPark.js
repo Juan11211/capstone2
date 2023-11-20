@@ -7,8 +7,8 @@ window.onload = function () {
     let locationDropDown = document.getElementById("locationDropDown");
     let parkTypeDropDown = document.getElementById("parkTypeDropDown");
 
-    searchByLocation.onchange = searchByLocationHandler;
-    searchByParkType.onchange = searchByParkTypeHandler;
+    searchByLocation.onchange = searchByLocationFunc;
+    searchByParkType.onchange = searchByParkTypeFunc;
 
     parkTypeDropDown.style.display = 'none';
     locationDropDown.style.display = "none";
@@ -26,7 +26,7 @@ function clearDisplayedParks() {
     displayParkLocation.style.display = "none";
 }
 
-function searchByLocationHandler() {
+function searchByLocationFunc() {
     if (searchByLocation.checked) {
         searchByParkType.checked = false;
         parkTypeDropDown.style.display = "none";
@@ -36,7 +36,7 @@ function searchByLocationHandler() {
     }
 }
 
-function searchByParkTypeHandler() {
+function searchByParkTypeFunc() {
     if (searchByParkType.checked) {
         searchByLocation.checked = false;
         locationDropDown.style.display = "none";
@@ -48,7 +48,7 @@ function searchByParkTypeHandler() {
 
 
 function populateLocationDropDown() {
-    let defaultLocationOption = new Option("Select One", "");
+    let defaultLocationOption = new Option("Select One");
     locationDropDown.appendChild(defaultLocationOption);
     for (let location of locationsArray) {
         let option = new Option(location);
@@ -57,7 +57,7 @@ function populateLocationDropDown() {
 }
 
 function populateParkTypeDropDown() {
-    let defaultParkOption = new Option("Select One", "");
+    let defaultParkOption = new Option("Select One");
     parkTypeDropDown.appendChild(defaultParkOption);
     for (let parkType of parkTypesArray) {
         let option = new Option(parkType);
@@ -112,29 +112,36 @@ function displayLocation(selectedParks) {
 
             const cardTitle = document.createElement('h5');
             cardTitle.classList.add('card-title', 'text-dark', 'mb-2', 'mt-2');
-            cardTitle.textContent = park.LocationName;
+            let locationName = park.LocationName;
+            const textNode = document.createTextNode(locationName);
+            cardTitle.appendChild(textNode);
 
             const cardText = document.createElement('p');
             cardText.classList.add('card-text', 'mb-2');
-            cardText.textContent = `Location: ${park.City}, ${park.State}`;
+            let locationCity = `Location: ${park.City}, ${park.State}`
+            const locationNode = document.createTextNode(locationCity);
+            cardText.appendChild(locationNode);
 
             // Check if the park has a Visit link
             if (park.Visit) {
                 const parkLink = document.createElement('a');
                 parkLink.setAttribute('href', park.Visit);
                 parkLink.setAttribute('target', '_blank');
-                parkLink.classList.add('btn', 'btn-dark', 'btn-sm', 'mt-3');
-                parkLink.textContent = 'Visit Property';
-                cardBody.appendChild(parkLink);
+                parkLink.classList.add('btn', 'btn-dark', 'btn-sm', 'mt-3', 'w-25', 'ms-3', 'rounded'); // Adjust the width class as needed
+                const linkText = document.createTextNode('Visit Property');
+                parkLink.appendChild(linkText);
+                parkCard.appendChild(parkLink);
             }
+            
+            
             
             cardBody.appendChild(cardTitle);
             cardBody.appendChild(cardText);
 
-            // Append cardBody to parkCard
+            // add entire cardbody to the parkCard div. 
             parkCard.appendChild(cardBody);
 
-            // Append parkCard to displayParkLocation
+            // add to parent div
             displayParkLocation.appendChild(parkCard);
         });
     }

@@ -11,16 +11,15 @@ function mountainDropDown() {
     // add options to selection 
     let defaultSelection = new Option("Select One");
     selectMountains.appendChild(defaultSelection);
-
     for (let mountain of mountainsArray) {
         let options = new Option(mountain.name);
         selectMountains.appendChild(options);
     }
 
     // Attach the displayMountain function to the onchange event
-    selectMountains.onchange = function() {
+    selectMountains.onchange = () => { 
         displayMountain(selectMountains);
-    };
+    }
 }
 
     async function getSunsetForMountain(lat, lng){
@@ -61,7 +60,6 @@ function mountainDropDown() {
         if (selectedMountain) {
             let sunsetData = await getSunsetForMountain(selectedMountain.coords.lat, selectedMountain.coords.lng);
     
-            // Clear previous content
             displayMountains.innerHTML = "";
     
             // Create elements for mountain display
