@@ -58,6 +58,7 @@ function mountainDropDown() {
         let selectedMountain = mountainsArray.find(mountain => mountain.name === mountainValues);
     
         if (selectedMountain) {
+            // if selectMountain is true, we're going to wait for the getSunset function to run and we're going to pass in the selectedMountain lat and lng, basically #'s. 
             let sunsetData = await getSunsetForMountain(selectedMountain.coords.lat, selectedMountain.coords.lng);
     
             displayMountains.innerHTML = "";
