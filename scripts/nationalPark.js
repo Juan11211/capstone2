@@ -127,7 +127,7 @@ function displayLocation(selectedParks) {
                 const parkLink = document.createElement('a');
                 parkLink.setAttribute('href', park.Visit);
                 parkLink.setAttribute('target', '_blank');
-                parkLink.classList.add('btn', 'btn-dark', 'btn-sm', 'mt-3', 'w-25', 'ms-3', 'rounded'); // Adjust the width class as needed
+                parkLink.classList.add('btn', 'btn-dark', 'btn-sm', 'mt-3', 'w-25', 'ms-3', 'rounded');
                 const linkText = document.createTextNode('Visit Property');
                 parkLink.appendChild(linkText);
                 parkCard.appendChild(parkLink);
